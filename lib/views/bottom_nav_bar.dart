@@ -16,7 +16,7 @@ class BottomBar extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.all(20),
         child: Container(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(10),
           margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             color: Colors.white,

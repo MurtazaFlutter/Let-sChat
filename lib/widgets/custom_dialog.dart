@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lets_chat/themes/colors.dart';
+import 'package:lets_chat/views/home_page.dart';
 
 class CustomDialogBox extends StatelessWidget {
   const CustomDialogBox({
@@ -73,7 +74,12 @@ class CustomDialogBox extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
                   },
                   child: Text(
                     buttonText,

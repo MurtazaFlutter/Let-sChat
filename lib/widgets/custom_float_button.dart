@@ -3,8 +3,12 @@ import 'package:lets_chat/themes/colors.dart';
 import 'package:lets_chat/views/register_page.dart';
 
 class CustomFloatButton extends StatelessWidget {
+  final String title;
+  final VoidCallback onTap;
   const CustomFloatButton({
     super.key,
+    required this.title,
+    required this.onTap,
   });
 
   @override
@@ -13,14 +17,7 @@ class CustomFloatButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const RegisterPage(),
-              ),
-            );
-          },
+          onTap: onTap,
           child: Container(
             width: 90,
             height: 40,
@@ -40,9 +37,9 @@ class CustomFloatButton extends StatelessWidget {
                 ),
               ],
             ),
-            child: const Text(
-              "Register",
-              style: TextStyle(color: AppColor.primary),
+            child: Text(
+              title,
+              style: const TextStyle(color: AppColor.primary),
             ),
           ),
         )

@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:lets_chat/themes/colors.dart';
-import 'package:lets_chat/widgets/custom_float_button.dart';
-import 'package:lets_chat/widgets/custom_text_field.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
-import '../widgets/custom_dialog.dart';
+import 'package:lets_chat/views/register_page.dart';
+
+import '../utils/exports.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -41,7 +37,15 @@ class _LoginPageState extends State<LoginPage> {
     bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       floatingActionButton: Visibility(
-          visible: !keyboardIsOpen, child: const CustomFloatButton()),
+          visible: !keyboardIsOpen,
+          child: CustomFloatButton(
+              title: 'Register',
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterPage(),
+                    ),
+                  ))),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       body: SingleChildScrollView(

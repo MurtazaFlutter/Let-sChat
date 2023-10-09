@@ -21,7 +21,7 @@ class BottomNavBarIcons extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.grey[300]),
+                  shape: BoxShape.circle, color: Colors.grey.shade100),
               child: Icon(
                 iconData,
                 color: isSelected ? AppColor.primary : Colors.grey,

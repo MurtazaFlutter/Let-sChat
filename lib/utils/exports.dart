@@ -5,3 +5,6 @@ export 'package:lets_chat/widgets/custom_float_button.dart';
 export 'package:lets_chat/widgets/custom_text_field.dart';
 export 'package:rounded_loading_button/rounded_loading_button.dart';
 export '../widgets/custom_dialog.dart';
+export 'package:lets_chat/controllers/page_controller.dart';
+export 'package:lets_chat/views/main_page.dart';
+export 'package:provider/provider.dart';

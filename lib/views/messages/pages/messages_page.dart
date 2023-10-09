@@ -1,5 +1,5 @@
 import 'package:lets_chat/utils/exports.dart';
-import 'package:lets_chat/widgets/chat_room.dart';
+import 'package:lets_chat/views/messages/widgets/chat_room.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({super.key});

@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:lets_chat/controllers/page_controller.dart';
-import 'package:lets_chat/themes/colors.dart';
-import 'package:lets_chat/views/main_page.dart';
-import 'package:provider/provider.dart';
+import 'utils/exports.dart';
 
 void main() {
   runApp(MultiProvider(providers: [

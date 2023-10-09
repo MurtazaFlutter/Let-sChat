@@ -1,7 +1,5 @@
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:lets_chat/controllers/page_controller.dart';
 import 'package:lets_chat/widgets/bottom_icons.dart';
-import 'package:provider/provider.dart';
 import '../utils/exports.dart';
 
 class BottomBar extends StatelessWidget {

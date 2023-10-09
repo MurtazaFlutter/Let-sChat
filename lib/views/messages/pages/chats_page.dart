@@ -1,5 +1,5 @@
 import 'package:lets_chat/utils/exports.dart';
-import 'package:lets_chat/views/messages_page.dart';
+import 'package:lets_chat/views/messages/pages/messages_page.dart';
 
 class ChatsPage extends StatelessWidget {
   const ChatsPage({super.key});

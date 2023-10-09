@@ -1,5 +1,5 @@
 import 'package:lets_chat/views/bottom_nav_bar.dart';
-import 'package:lets_chat/views/chats_page.dart';
+import 'package:lets_chat/views/messages/chats_page.dart';
 import 'package:lets_chat/views/home_page.dart';
 import 'package:lets_chat/views/profile_screen.dart';
 import 'package:provider/provider.dart';

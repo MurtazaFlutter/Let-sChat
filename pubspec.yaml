@@ -41,6 +41,7 @@ dependencies:
   rounded_loading_button: ^2.1.0
   custom_navigation_bar: ^0.8.2
   flutter_vector_icons: ^2.0.0
+  timeago: ^3.5.0
 
 dev_dependencies:
   flutter_test:

@@ -7,9 +7,6 @@ class ChatsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: const Text("data"),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
       appBar: AppBar(
         actions: const [
           Padding(

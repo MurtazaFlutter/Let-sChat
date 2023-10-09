@@ -36,13 +36,32 @@ class AccountProfileScreen extends StatelessWidget {
               ),
             ),
             const Gap(30),
-            Expanded(
-              child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: ((context, index) {
-                    return const MenuTile();
-                  })),
-            )
+            MenuTile(
+                icon: Icons.dark_mode_outlined,
+                menuTitle: 'Appearance',
+                boxColor: Colors.blue.shade100,
+                iconColor: Colors.blueAccent),
+            MenuTile(
+              icon: Icons.notifications_none_outlined,
+              menuTitle: 'Notifications',
+              boxColor: Colors.red.shade100,
+              iconColor: AppColor.secondary,
+            ),
+            MenuTile(
+                icon: Icons.privacy_tip_outlined,
+                menuTitle: 'Privacy',
+                boxColor: Colors.teal.shade100,
+                iconColor: Colors.teal),
+            MenuTile(
+                icon: Icons.lock_outline,
+                menuTitle: 'Change Password',
+                boxColor: Colors.orange.shade100,
+                iconColor: Colors.orange),
+            MenuTile(
+                icon: Icons.logout_outlined,
+                menuTitle: 'Log Out',
+                boxColor: Colors.grey.shade100,
+                iconColor: Colors.grey),
           ],
         )));
   }

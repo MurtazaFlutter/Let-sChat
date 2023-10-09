@@ -1,8 +1,16 @@
 import '../utils/exports.dart';
 
 class MenuTile extends StatelessWidget {
+  final IconData icon;
+  final String menuTitle;
+  final Color boxColor;
+  final Color iconColor;
   const MenuTile({
     super.key,
+    required this.icon,
+    required this.menuTitle,
+    required this.boxColor,
+    required this.iconColor,
   });
 
   @override
@@ -18,11 +26,16 @@ class MenuTile extends StatelessWidget {
               height: 30,
               width: 30,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: AppColor.secondary),
-              child: const Icon(Icons.dark_mode)),
-          title: const Text("Appearance"),
-          trailing: const Icon(Icons.arrow_forward_ios),
+                  borderRadius: BorderRadius.circular(5), color: boxColor),
+              child: Icon(
+                icon,
+                color: iconColor,
+              )),
+          title: Text(menuTitle),
+          trailing: const Icon(
+            Icons.arrow_forward_ios,
+            size: 16,
+          ),
         ),
       ),
     );

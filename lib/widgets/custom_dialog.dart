@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lets_chat/themes/colors.dart';
-import 'package:lets_chat/views/home_page.dart';
 
 import '../views/bottom_nav_bar.dart';
 

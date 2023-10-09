@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lets_chat/themes/colors.dart';
-import 'package:lets_chat/views/register_page.dart';
 
 class CustomFloatButton extends StatelessWidget {
   final String title;

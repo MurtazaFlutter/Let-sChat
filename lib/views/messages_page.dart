@@ -22,6 +22,33 @@ class _MessagesPageState extends State<MessagesPage> {
     super.dispose();
   }
 
+  final List<Map<String, dynamic>> messages = [
+    {
+      'text': 'Hello',
+      'isMyMessage': true,
+    },
+    {
+      'text': 'Hi there!',
+      'isMyMessage': false,
+    },
+    {
+      'text': 'Hello',
+      'isMyMessage': true,
+    },
+    {
+      'text': 'Hi there!',
+      'isMyMessage': false,
+    },
+    {
+      'text': 'Hello',
+      'isMyMessage': true,
+    },
+    {
+      'text': 'Hi there!',
+      'isMyMessage': false,
+    },
+  ];
+
   late final bool isMe;
   @override
   Widget build(BuildContext context) {
@@ -64,9 +91,15 @@ class _MessagesPageState extends State<MessagesPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Padding(
         padding: const EdgeInsets.only(bottom: 60),
-        child: ListView.builder(itemBuilder: (context, index) {
-          return const ChatRoom();
-        }),
+        child: ListView.builder(
+            itemCount: messages.length,
+            itemBuilder: (context, index) {
+              final message = messages[index];
+              final isMyMessage = message['isMyMessage'] ?? false;
+              return ChatRoom(
+                isMyMessages: isMyMessage,
+              );
+            }),
       ),
     );
   }

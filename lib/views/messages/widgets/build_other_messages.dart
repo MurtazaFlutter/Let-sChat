@@ -47,7 +47,9 @@ class BuildOtherMessage extends StatelessWidget {
                 const TextSpan(
                     text: 'this is a other test message',
                     style: TextStyle(
-                        fontSize: 14, color: Colors.black, height: 1.5)),
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400)),
                 const TextSpan(text: ""),
                 TextSpan(
                     text: AppUtil.getTimeAgo(

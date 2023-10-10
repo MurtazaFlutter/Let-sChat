@@ -54,8 +54,13 @@ class _MessagesPageState extends State<MessagesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColor.primary,
         centerTitle: true,
-        title: const Text("Test User"),
+        elevation: 1,
+        title: const Text(
+          "Test User",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -90,7 +95,7 @@ class _MessagesPageState extends State<MessagesPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Padding(
-        padding: const EdgeInsets.only(bottom: 60),
+        padding: const EdgeInsets.only(bottom: 60, top: 15),
         child: ListView.builder(
             itemCount: messages.length,
             itemBuilder: (context, index) {

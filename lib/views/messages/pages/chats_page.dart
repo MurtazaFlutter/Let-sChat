@@ -25,7 +25,7 @@ class ChatsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(50)),
               height: 50,
               child: TextField(
@@ -72,17 +72,19 @@ class ChatsPage extends StatelessWidget {
                         ),
                         Gap(5),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "John Siphron",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                "John Siphron",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w500),
+                              ),
                             ),
-                            Expanded(
-                                child: Text(
-                                    "This is a test message will be recived or sent"))
+                            Text(
+                                "This is a test message will be recived or sent")
                           ],
                         ),
                       ],

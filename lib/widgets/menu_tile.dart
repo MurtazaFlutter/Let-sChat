@@ -19,8 +19,13 @@ class MenuTile extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: Container(
         height: 60,
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 1,
+              blurRadius: 1,
+              offset: const Offset(1, 1))
+        ], color: Colors.white, borderRadius: BorderRadius.circular(20)),
         child: ListTile(
           leading: Container(
               height: 30,

@@ -10,5 +10,5 @@ export 'package:lets_chat/views/main_page.dart';
 export 'package:provider/provider.dart';
 export 'package:lets_chat/views/bottom_nav_bar.dart';
 export 'package:lets_chat/views/messages/chats_page.dart';
-export 'package:lets_chat/views/home_page.dart';
+export 'package:lets_chat/views/home/home_page.dart';
 export 'package:lets_chat/views/profile_screen.dart';

@@ -48,51 +48,59 @@ class ChatsPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(itemBuilder: ((context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MessagesPage()));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    height: 80,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage("assets/icons/chat.png"),
+            child: ListView.builder(
+                itemCount: 1,
+                itemBuilder: ((context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MessagesPage()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        Gap(5),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "John Siphron",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w500),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const CircleAvatar(
+                            radius: 20,
+                            backgroundImage:
+                                AssetImage('assets/icons/chat.png'),
+                          ),
+                          title: const Text("John same"),
+                          subtitle: const Text("here is my message"),
+                          trailing: Column(
+                            children: [
+                              const Row(
+                                children: [
+                                  Icon(Icons.remove_red_eye, size: 10),
+                                  Text('1 min'),
+                                ],
                               ),
-                            ),
-                            Text(
-                                "This is a test message will be recived or sent")
-                          ],
+                              Container(
+                                height: 20,
+                                width: 20,
+                                decoration: const BoxDecoration(
+                                    color: Colors.red, shape: BoxShape.circle),
+                                child: const Center(
+                                    child: Text(
+                                  "1",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              );
-            })),
+                  );
+                })),
           )
         ],
       ),

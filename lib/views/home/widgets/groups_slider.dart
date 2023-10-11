@@ -22,7 +22,6 @@ class GroupsSliderState extends State<GroupsSlider> {
           height: 250,
           child: CarouselSlider(
             options: CarouselOptions(
-              autoPlay: true,
               enableInfiniteScroll: false,
               viewportFraction: 0.7,
               enlargeCenterPage: true,

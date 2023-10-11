@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lets_chat/utils/exports.dart';
 import 'package:lets_chat/views/home/widgets/groups_slider.dart';
 import 'package:lets_chat/views/messages/widgets/recent_chat.dart';

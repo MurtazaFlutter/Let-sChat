@@ -37,6 +37,11 @@ class AccountProfileScreen extends StatelessWidget {
             ),
             const Gap(30),
             MenuTile(
+                icon: Icons.person,
+                menuTitle: 'Edit Profile',
+                boxColor: Colors.green.shade100,
+                iconColor: Colors.green),
+            MenuTile(
                 icon: Icons.dark_mode_outlined,
                 menuTitle: 'Appearance',
                 boxColor: Colors.blue.shade100,
@@ -48,7 +53,7 @@ class AccountProfileScreen extends StatelessWidget {
               iconColor: AppColor.secondary,
             ),
             MenuTile(
-                icon: Icons.privacy_tip_outlined,
+                icon: Icons.share,
                 menuTitle: 'Privacy',
                 boxColor: Colors.teal.shade100,
                 iconColor: Colors.teal),

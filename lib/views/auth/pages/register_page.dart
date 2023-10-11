@@ -1,5 +1,5 @@
+import 'package:lets_chat/services/auth_service.dart';
 import 'package:lets_chat/views/auth/pages/login_page.dart';
-
 import '../../../utils/exports.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -11,20 +11,19 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   bool _isHidePwd = true;
-  //late AuthService service;
+  late AuthService service;
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
   late TextEditingController _usernameController;
-  late RoundedLoadingButtonController _loginBtnController;
+  late RoundedLoadingButtonController _registerBtnController;
 
   @override
   void initState() {
-    //  service = AuthService(FirebaseAuth.instance);
+    service = AuthService();
     _usernameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
-
-    _loginBtnController = RoundedLoadingButtonController();
+    _registerBtnController = RoundedLoadingButtonController();
     super.initState();
   }
 
@@ -38,6 +37,19 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    void signUp() async {
+      try {
+        service.registerUser(
+            username: _usernameController.text,
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim());
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MainScreen()));
+      } catch (e) {
+        print("error $e");
+      }
+    }
+
     bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       floatingActionButton: Visibility(
@@ -146,8 +158,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 RoundedLoadingButton(
                   width: MediaQuery.of(context).size.width,
                   color: AppColor.primary,
-                  controller: _loginBtnController,
-                  onPressed: () {},
+                  controller: _registerBtnController,
+                  onPressed: signUp,
                   child: const Text(
                     "Register",
                     style: TextStyle(

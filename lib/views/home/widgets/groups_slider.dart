@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lets_chat/views/home/widgets/groups.dart';
-
 import '../../../utils/exports.dart';
 
 class GroupsSlider extends StatefulWidget {
@@ -20,7 +19,7 @@ class GroupsSliderState extends State<GroupsSlider> {
     return Column(
       children: [
         SizedBox(
-          height: 200,
+          height: 250,
           child: CarouselSlider(
             options: CarouselOptions(
               autoPlay: true,

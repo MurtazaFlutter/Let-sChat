@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lets_chat/utils/exports.dart';
 import 'package:lets_chat/views/home/widgets/groups_slider.dart';
+import 'package:lets_chat/views/messages/widgets/recent_chat.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -130,6 +131,22 @@ class HomePage extends StatelessWidget {
                       Gap(20),
                     ],
                   ),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Recents",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        ),
+                        Gap(20),
+                        RecentChatWidget()
+                      ],
+                    ),
+                  )
                 ],
               )
             ],

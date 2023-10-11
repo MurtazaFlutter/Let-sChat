@@ -1,5 +1,6 @@
-import 'package:lets_chat/utils/exports.dart';
+import 'package:flutter/material.dart';
 import 'package:lets_chat/views/messages/pages/messages_page.dart';
+import 'package:lets_chat/views/messages/widgets/recent_chat.dart';
 
 class ChatsPage extends StatelessWidget {
   const ChatsPage({super.key});
@@ -56,49 +57,10 @@ class ChatsPage extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const MessagesPage()));
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    height: 80,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 1,
-                            blurRadius: 1,
-                            offset: const Offset(1, 1))
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage("assets/icons/chat.png"),
-                        ),
-                        Gap(5),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "John Siphron",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            Expanded(
-                                child: Text(
-                                    "This is a test message will be recived or sent"))
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                child: const RecentChatWidget(),
               );
             })),
-          )
+          ),
         ],
       ),
     );

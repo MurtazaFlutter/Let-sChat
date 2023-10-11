@@ -1,6 +1,7 @@
-import 'package:lets_chat/views/register_page.dart';
+import 'package:lets_chat/views/auth/pages/forgot_password_page.dart';
+import 'package:lets_chat/views/auth/pages/register_page.dart';
 
-import '../utils/exports.dart';
+import '../../../utils/exports.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -114,7 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                 Align(
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
-                      onTap: null,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ForgotPasswordPage())),
                       child: const Text(
                         "Forgot Password?",
                         style: TextStyle(

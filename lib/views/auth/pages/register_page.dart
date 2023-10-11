@@ -1,6 +1,6 @@
-import 'package:lets_chat/views/login_page.dart';
+import 'package:lets_chat/views/auth/pages/login_page.dart';
 
-import '../utils/exports.dart';
+import '../../../utils/exports.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -72,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   )),
                 ),
                 const Text(
-                  'Login',
+                  'Register',
                   style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                 ),
                 const Gap(50),
@@ -149,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _loginBtnController,
                   onPressed: () {},
                   child: const Text(
-                    "Login",
+                    "Register",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

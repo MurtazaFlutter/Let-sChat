@@ -1,5 +1,4 @@
 import 'package:lets_chat/utils/exports.dart';
-import '../../../utils/app_util.dart';
 
 class BuildOtherMessage extends StatelessWidget {
   const BuildOtherMessage({super.key});

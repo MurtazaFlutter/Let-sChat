@@ -1,6 +1,3 @@
-import 'package:lets_chat/services/auth_service.dart';
-import 'package:lets_chat/utils/app_util.dart';
-import 'package:lets_chat/views/auth/pages/login_page.dart';
 import '../../../utils/exports.dart';
 
 class RegisterPage extends StatefulWidget {

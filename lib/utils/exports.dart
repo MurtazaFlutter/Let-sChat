@@ -12,3 +12,6 @@ export 'package:lets_chat/views/bottom_nav_bar.dart';
 export 'package:lets_chat/views/messages/chats_page.dart';
 export 'package:lets_chat/views/home/home_page.dart';
 export 'package:lets_chat/views/profile_screen.dart';
+export 'package:lets_chat/services/auth_service.dart';
+export 'package:lets_chat/utils/app_util.dart';
+export 'package:lets_chat/views/auth/pages/login_page.dart';

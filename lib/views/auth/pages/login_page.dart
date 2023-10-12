@@ -1,5 +1,3 @@
-import 'package:lets_chat/services/auth_service.dart';
-import 'package:lets_chat/utils/app_util.dart';
 import 'package:lets_chat/views/auth/pages/forgot_password_page.dart';
 import 'package:lets_chat/views/auth/pages/register_page.dart';
 

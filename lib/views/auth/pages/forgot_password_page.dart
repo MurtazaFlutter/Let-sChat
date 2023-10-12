@@ -1,5 +1,3 @@
-import 'package:lets_chat/utils/app_util.dart';
-
 import '../../../utils/exports.dart';
 
 class ForgotPasswordPage extends StatefulWidget {

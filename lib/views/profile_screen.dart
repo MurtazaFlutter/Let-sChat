@@ -1,4 +1,4 @@
-import 'package:lets_chat/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lets_chat/utils/exports.dart';
 import 'package:lets_chat/widgets/menu_tile.dart';
 
@@ -11,11 +11,23 @@ class AccountProfileScreen extends StatefulWidget {
 
 class _AccountProfileScreenState extends State<AccountProfileScreen> {
   late AuthService service;
+  Map<String, dynamic> userData = {};
 
   @override
   void initState() {
     service = AuthService();
+    fetchUserData();
     super.initState();
+  }
+
+  Future<void> fetchUserData() async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      final response = await service.getUserData(currentUser.uid);
+      setState(() {
+        userData = response;
+      });
+    }
   }
 
   @override
@@ -25,24 +37,24 @@ class _AccountProfileScreenState extends State<AccountProfileScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const Center(
+              Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage("assets/icons/chat.png"),
                     ),
-                    Gap(20),
+                    const Gap(20),
                     Text(
-                      "Ghulam Murtaza",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                      userData['username'] ?? 'loading',
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      "murtaza@gmail.com",
-                      style: TextStyle(
+                      userData['email'] ?? 'loading',
+                      style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                           color: Colors.grey),

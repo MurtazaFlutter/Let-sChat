@@ -8,13 +8,13 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPage extends State<ForgotPasswordPage> {
-  //late AuthService service;
+  late AuthService service;
   late TextEditingController _emailController;
   late RoundedLoadingButtonController _loginBtnController;
 
   @override
   void initState() {
-    //  service = AuthService(FirebaseAuth.instance);
+    service = AuthService();
     _emailController = TextEditingController();
     _loginBtnController = RoundedLoadingButtonController();
     super.initState();
@@ -76,7 +76,14 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                 width: MediaQuery.of(context).size.width,
                 color: AppColor.primary,
                 controller: _loginBtnController,
-                onPressed: onLogin,
+                onPressed: () {
+                  service.forgotPassword(_emailController.text.trim());
+                  const CustomDialogBox(
+                    title: "Reset Password Link",
+                    descriptions:
+                        'An Email has been sent to you to reset your password',
+                  );
+                },
                 child: const Text(
                   "Submit",
                   style: TextStyle(
@@ -92,48 +99,29 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
     );
   }
 
-  bool _validateForm(
-    String email,
-  ) {
-    if (email.isEmpty) {
-      _loginBtnController.reset();
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const CustomDialogBox(
-            descriptions: "Please enter your email.",
-          );
-        },
-      );
-      return false;
-    }
-    return true;
-  }
+  // Future onPasswordReset() async {
+  //   FocusScope.of(context).unfocus();
+  //   if (!_validateForm(_emailController.text)) {
+  //     return;
+  //   }
 
-  Future onLogin() async {
-    FocusScope.of(context).unfocus();
-    if (!_validateForm(_emailController.text)) {
-      return;
-    }
-
-    // var res = await service.signInWithEmailPassword(
-    //   _emailController.text,
-    //   _passwordController.text,
-    // );
-    // if (res.status) {
-    //   _loginBtnController.success();
-    // }
-    else {
-      _loginBtnController.reset();
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const CustomDialogBox(
-            title: "Login",
-            //  descriptions: res.message,
-          );
-        },
-      );
-    }
-  }
+  //   var res = await service.forgotPassword(
+  //     _emailController.text,
+  //   );
+  //   if (res.) {
+  //     _loginBtnController.success();
+  //   }
+  //   else {
+  //     _loginBtnController.reset();
+  //     showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return const CustomDialogBox(
+  //           title: "Login",
+  //           //  descriptions: res.message,
+  //         );
+  //       },
+  //     );
+  //   }
+  // }
 }

@@ -66,4 +66,12 @@ class AuthService {
       return <String, dynamic>{};
     }
   }
+
+  Future<void> forgotPassword(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }

@@ -41,6 +41,8 @@ class _RegisterPageState extends State<RegisterPage> {
             username: _usernameController.text,
             email: _emailController.text.trim(),
             password: _passwordController.text.trim());
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MainScreen()));
       } catch (e) {
         print("error $e");
       }

@@ -30,6 +30,24 @@ class AuthService {
     }
   }
 
+  Future<ServiceResponse> loginUser(
+      {required String email, required String password}) async {
+    try {
+      UserCredential credential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      return ServiceResponse.fromJson(
+          {'status': true, "message": "success", "data": credential.user});
+    } on FirebaseAuthException catch (e) {
+      return ServiceResponse.fromJson(
+        {"status": false, "message": e.message.toString()},
+      );
+    } on Exception catch (e) {
+      return ServiceResponse.fromJson(
+        {"status": false, "message": e.toString()},
+      );
+    }
+  }
+
   Future<void> logout() async {
     await _firebaseAuth.signOut();
   }

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lets_chat/themes/colors.dart';
 
-import '../views/bottom_nav_bar.dart';
-
 class CustomDialogBox extends StatelessWidget {
   const CustomDialogBox({
     Key? key,
     this.title = "Message",
     this.descriptions = "",
     this.buttonText = "Ok",
-    this.logo = "https://cdn-icons-png.flaticon.com/512/3820/3820331.png",
+    this.logo = 'assets/images/bolt.png',
   }) : super(key: key);
 
   final String title;
@@ -75,12 +73,7 @@ class CustomDialogBox extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BottomBar(),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Text(
                     buttonText,

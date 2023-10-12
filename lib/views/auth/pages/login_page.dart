@@ -1,3 +1,5 @@
+import 'package:lets_chat/services/auth_service.dart';
+import 'package:lets_chat/utils/app_util.dart';
 import 'package:lets_chat/views/auth/pages/forgot_password_page.dart';
 import 'package:lets_chat/views/auth/pages/register_page.dart';
 
@@ -12,14 +14,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isHidePwd = true;
-  //late AuthService service;
+  late AuthService service;
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
   late RoundedLoadingButtonController _loginBtnController;
 
   @override
   void initState() {
-    //  service = AuthService(FirebaseAuth.instance);
+    service = AuthService();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     _loginBtnController = RoundedLoadingButtonController();
@@ -63,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 100,
                   child: Center(
                       child: Image.asset(
-                    'assets/icons/chat.png',
+                    AppUtil().appIcon,
                     color: AppColor.primary,
                   )),
                 ),
@@ -170,23 +172,16 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    // var res = await service.signInWithEmailPassword(
-    //   _emailController.text,
-    //   _passwordController.text,
-    // );
-    // if (res.status) {
-    //   _loginBtnController.success();
-    // }
-    else {
+    var res = await service.loginUser(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+    if (res.status) {
+      _loginBtnController.success();
+    } else {
       _loginBtnController.reset();
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const CustomDialogBox(
-            title: "Login",
-            //  descriptions: res.message,
-          );
-        },
+      CustomDialogBox(
+        title: "Login",
+        descriptions: res.message,
       );
     }
   }

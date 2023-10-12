@@ -1,4 +1,5 @@
 import 'package:lets_chat/services/auth_service.dart';
+import 'package:lets_chat/utils/app_util.dart';
 import 'package:lets_chat/views/auth/pages/login_page.dart';
 import '../../../utils/exports.dart';
 
@@ -43,8 +44,6 @@ class _RegisterPageState extends State<RegisterPage> {
             username: _usernameController.text,
             email: _emailController.text.trim(),
             password: _passwordController.text.trim());
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MainScreen()));
       } catch (e) {
         print("error $e");
       }
@@ -79,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 100,
                   child: Center(
                       child: Image.asset(
-                    'assets/icons/chat.png',
+                    AppUtil().appIcon,
                     color: AppColor.primary,
                   )),
                 ),

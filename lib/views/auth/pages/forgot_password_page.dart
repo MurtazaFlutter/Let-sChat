@@ -1,4 +1,4 @@
-import 'package:lets_chat/views/auth/pages/register_page.dart';
+import 'package:lets_chat/utils/app_util.dart';
 
 import '../../../utils/exports.dart';
 
@@ -45,7 +45,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                 height: 100,
                 child: Center(
                     child: Image.asset(
-                  'assets/icons/chat.png',
+                  AppUtil().appIcon,
                   color: AppColor.primary,
                 )),
               ),

@@ -67,19 +67,19 @@ class Groups extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Center(
+                  child:  Center(
                     child: ListTile(
                       leading: CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/icons/chat.png'),
+                        backgroundImage: AssetImage(AppUtil().appIcon),
                       ),
-                      title: Text("Murtaza"),
-                      subtitle: Text(
+                      title: const Text("Murtaza"),
+                      subtitle:const Text(
                         "This is dummy message real data will come soon",
                         maxLines: 1,
                         overflow: TextOverflow.clip,
                       ),
-                      trailing: Icon(Icons.remove_red_eye),
+                      trailing:const Icon(Icons.remove_red_eye),
                     ),
                   ),
                 ),

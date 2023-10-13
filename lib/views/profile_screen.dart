@@ -41,9 +41,9 @@ class _AccountProfileScreenState extends State<AccountProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const CircleAvatar(
+                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage("assets/icons/chat.png"),
+                      backgroundImage: AssetImage(AppUtil().appIcon),
                     ),
                     const Gap(20),
                     Text(

@@ -1,6 +1,7 @@
 import 'package:lets_chat/utils/exports.dart';
 import 'package:lets_chat/views/home/widgets/groups_slider.dart';
 import 'package:lets_chat/views/messages/widgets/recent_chat.dart';
+import 'package:lets_chat/utils/app_util.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -26,12 +27,12 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          actions: const [
+          actions:  [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding:const EdgeInsets.all(8.0),
               child: CircleAvatar(
                 radius: 30,
-                backgroundImage: AssetImage("assets/icons/chat.png"),
+                backgroundImage: AssetImage(AppUtil().appIcon),
               ),
             )
           ],
@@ -75,7 +76,7 @@ class HomePage extends StatelessWidget {
                                       offset: const Offset(1, 1))
                                 ],
                               ),
-                              child: const Center(
+                              child:  Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -83,9 +84,9 @@ class HomePage extends StatelessWidget {
                                     CircleAvatar(
                                       radius: 25,
                                       backgroundImage:
-                                          AssetImage("assets/icons/chat.png"),
+                                          AssetImage(AppUtil().appIcon),
                                     ),
-                                    Text('John'),
+                                  const  Text('John'),
                                   ],
                                 ),
                               ),

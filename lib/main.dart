@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.hasData) {
                 return MainScreen();
               } else {
-                return const LoginPage();
+                return  MainScreen();
               }
             })));
   }

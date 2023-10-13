@@ -26,14 +26,14 @@ class RecentChatWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Row(
+             Row(
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage("assets/icons/chat.png"),
+                  backgroundImage: AssetImage(AppUtil().appIcon),
                 ),
-                SizedBox(width: 10),
-                Column(
+               const SizedBox(width: 10),
+               const Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

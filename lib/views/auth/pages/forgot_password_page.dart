@@ -30,69 +30,75 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        height: MediaQuery.of(context).size.height,
-        child: Padding(
+      body: SingleChildScrollView(
+        child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 100,
-                child: Center(
-                    child: Image.asset(
-                  AppUtil().appIcon,
-                  color: AppColor.primary,
-                )),
-              ),
-              const Text(
-                'Forgot Password',
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-              ),
-              const Gap(30),
-              const Center(
-                child: Text(
-                  'Please enter your email to reset password',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-              const Gap(50),
-              CustomTextField(
-                controller: _emailController,
-                hintText: 'Email',
-                leadingIcon: const Icon(
-                  Icons.email_outlined,
-                  color: Colors.grey,
-                ),
-              ),
-              const Divider(
-                color: Colors.grey,
-                height: 10,
-              ),
-              const Gap(20),
-              RoundedLoadingButton(
-                width: MediaQuery.of(context).size.width,
-                color: AppColor.primary,
-                controller: _loginBtnController,
-                onPressed: () {
-                  service.forgotPassword(_emailController.text.trim());
-                  const CustomDialogBox(
-                    title: "Reset Password Link",
-                    descriptions:
-                        'An Email has been sent to you to reset your password',
-                  );
-                },
-                child: const Text(
-                  "Submit",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Consumer<ValidatorNotifier>(
+                builder: (context, validatorNotifier, child) {
+              return Column(
+                children: [
+                  const Gap(50),
+                  SizedBox(
+                    height: 100,
+                    child: Center(
+                        child: Image.asset(
+                      AppUtil().appIcon,
+                      color: AppColor.primary,
+                    )),
                   ),
-                ),
-              ),
-            ],
+                  const Text(
+                    'Forgot Password',
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                  const Gap(30),
+                  const Center(
+                    child: Text(
+                      'Please enter your email to reset password',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  const Gap(50),
+                  CommonTextField(
+                    validator: FlutterError.onError,
+                    alignment: Alignment.centerLeft,
+                    controller: _emailController,
+                    hintText: "email",
+                    inputType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    onChanged: (email) {
+                      validatorNotifier.updateLoginEmail(email);
+                    },
+                  ),
+                  validatorNotifier.forgotEmail.isNotEmpty
+                      ? ErrorText(errorText: validatorNotifier.forgotEmail)
+                      : Container(),
+                  const Gap(20),
+                  RoundedLoadingButton(
+                    width: MediaQuery.of(context).size.width,
+                    color: AppColor.primary,
+                    controller: _loginBtnController,
+                    onPressed: () {
+                      service.forgotPassword(_emailController.text.trim());
+                      const CustomDialogBox(
+                        title: "Reset Password Link",
+                        descriptions:
+                            'An Email has been sent to you to reset your password',
+                      );
+                    },
+                    child: const Text(
+                      "Submit",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
           ),
         ),
       ),

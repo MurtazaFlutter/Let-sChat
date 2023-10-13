@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lets_chat/utils/exports.dart';
 import 'package:lets_chat/widgets/menu_tile.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lets_chat/themes/colors.dart';
+import 'package:lets_chat/utils/app_util.dart';
 
 class CustomDialogBox extends StatelessWidget {
   const CustomDialogBox({
@@ -7,13 +8,11 @@ class CustomDialogBox extends StatelessWidget {
     this.title = "Message",
     this.descriptions = "",
     this.buttonText = "Ok",
-    this.logo = 'assets/images/bolt.png',
   }) : super(key: key);
 
   final String title;
   final String descriptions;
   final String buttonText;
-  final String logo;
 
   @override
   Widget build(BuildContext context) {
@@ -94,13 +93,8 @@ class CustomDialogBox extends StatelessWidget {
             backgroundColor: Colors.transparent,
             radius: Constants.avatarRadius,
             child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
-              child: Image(
-                image: NetworkImage(
-                  logo,
-                ),
-              ),
-            ),
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                child: Image.asset(AppUtil().appIcon)),
           ),
         ),
       ],

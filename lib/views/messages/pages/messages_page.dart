@@ -78,17 +78,17 @@ class _MessagesPageState extends State<MessagesPage> {
                     Icons.add,
                     color: AppColor.primary,
                   )),
-              Expanded(
-                  child: CustomTextField(
-                controller: _messagesController,
-                hintText: 'Write your message',
-              )),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.send_rounded,
-                    color: AppColor.primary,
-                  ))
+              // Expanded(
+              //     child: CustomTextField(
+              //   controller: _messagesController,
+              //   hintText: 'Write your message',
+              // )),
+              // IconButton(
+              //     onPressed: () {},
+              //     icon: const Icon(
+              //       Icons.send_rounded,
+              //       color: AppColor.primary,
+              //     ))
             ],
           ),
         ),

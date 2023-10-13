@@ -1,7 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:lets_chat/firebase_options.dart';
-import 'package:lets_chat/views/auth/pages/login_page.dart';
 import 'utils/exports.dart';
 
 void main() async {
@@ -9,6 +5,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: ((context) => MainScreenNotifier())),
+    ChangeNotifierProvider(create: ((context) => ValidatorNotifier())),
   ], child: const MyApp()));
 }
 
@@ -19,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Chat',
+        title: 'Flutter Flash Chat',
         theme: ThemeData(
           scaffoldBackgroundColor: AppColor.appBgColor,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

@@ -5,5 +5,5 @@ class AppUtil {
     return timeago.format(dt, allowFromNow: true, locale: 'en_short');
   }
 
-  final String appIcon = 'assets/images/bolt.png';
+  final String appIcon = 'assets/chaticon.jpg';
 }

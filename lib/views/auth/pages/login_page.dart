@@ -1,6 +1,3 @@
-import 'package:lets_chat/views/auth/pages/forgot_password_page.dart';
-import 'package:lets_chat/views/auth/pages/register_page.dart';
-
 import '../../../utils/exports.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,7 +8,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _isHidePwd = true;
   late AuthService service;
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
@@ -35,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final formPageKey = GlobalKey<FormState>();
     bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       floatingActionButton: Visibility(
@@ -55,132 +52,102 @@ class _LoginPageState extends State<LoginPage> {
           height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                SizedBox(
-                  height: 100,
-                  child: Center(
-                      child: Image.asset(
-                    AppUtil().appIcon,
-                    color: AppColor.primary,
-                  )),
-                ),
-                const Text(
-                  'Login',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                ),
-                const Gap(50),
-                CustomTextField(
-                  controller: _emailController,
-                  hintText: 'Email',
-                  leadingIcon: const Icon(
-                    Icons.email_outlined,
-                    color: Colors.grey,
-                  ),
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 10,
-                ),
-                const Gap(10),
-                CustomTextField(
-                  obscureText: _isHidePwd,
-                  controller: _passwordController,
-                  hintText: 'Password',
-                  leadingIcon: const Icon(
-                    Icons.lock_clock_outlined,
-                    color: Colors.grey,
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _isHidePwd = !_isHidePwd;
-                      });
-                    },
-                    icon: Icon(
-                      _isHidePwd
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      color: Colors.grey,
+            child: Form(
+              key: formPageKey,
+              child: Consumer<ValidatorNotifier>(
+                  builder: (context, validationProvider, child) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SizedBox(
+                      height: 100,
+                      child: Center(
+                          child: Image.asset(
+                        AppUtil().appIcon,
+                      )),
                     ),
-                  ),
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 10,
-                ),
-                const Gap(10),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ForgotPasswordPage())),
+                    const Text(
+                      'Login',
+                      style:
+                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+                    const Gap(50),
+                    CommonTextField(
+                      validator: FlutterError.onError,
+                      alignment: Alignment.centerLeft,
+                      controller: _emailController,
+                      hintText: "Email",
+                      inputType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      onChanged: (email) {
+                        validationProvider.updateLoginEmail(email);
+                      },
+                    ),
+                    validationProvider.errorLoginEmail.isNotEmpty
+                        ? ErrorText(
+                            errorText: validationProvider.errorLoginEmail)
+                        : Container(),
+                    const Gap(10),
+                    CommonTextField(
+                      controller: _passwordController,
+                      obsecureText: validationProvider.loginObsecureText,
+                      hintText: "Password",
+                      inputType: TextInputType.visiblePassword,
+                      onChanged: (password) {
+                        validationProvider.updatePassword(password);
+                      },
+                      onTap: () {},
+                      alignment: Alignment.centerLeft,
+                      iconSuffix: validationProvider.loginObsecureText
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      onSuffixTap: () {
+                        validationProvider.loginPasswordVisibility();
+                      },
+                      textInputAction: TextInputAction.done,
+                    ),
+                    validationProvider.errorPass.isNotEmpty
+                        ? ErrorText(errorText: validationProvider.errorPass)
+                        : Container(),
+                    const Gap(10),
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ForgotPasswordPage())),
+                          child: const Text(
+                            "Forgot Password?",
+                            style: TextStyle(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                            ),
+                          ),
+                        )),
+                    const Gap(20),
+                    RoundedLoadingButton(
+                      width: MediaQuery.of(context).size.width,
+                      color: AppColor.primary,
+                      controller: _loginBtnController,
+                      onPressed: () {},
                       child: const Text(
-                        "Forgot Password?",
+                        "Login",
                         style: TextStyle(
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    )),
-                const Gap(20),
-                RoundedLoadingButton(
-                  width: MediaQuery.of(context).size.width,
-                  color: AppColor.primary,
-                  controller: _loginBtnController,
-                  onPressed: onLogin,
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                ),
-              ],
+                  ],
+                );
+              }),
             ),
           ),
         ),
       ),
     );
-  }
-
-  bool _validateForm(String email, String pwd) {
-    if (email.isEmpty || pwd.isEmpty) {
-      _loginBtnController.reset();
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const CustomDialogBox(
-            descriptions: "Please enter your email and password.",
-          );
-        },
-      );
-      return false;
-    }
-    return true;
-  }
-
-  Future onLogin() async {
-    FocusScope.of(context).unfocus();
-    if (!_validateForm(_emailController.text, _passwordController.text)) {
-      return;
-    }
-
-    var res = await service.loginUser(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-    if (res.status) {
-      _loginBtnController.success();
-    } else {
-      _loginBtnController.reset();
-      CustomDialogBox(
-        title: "Login",
-        descriptions: res.message,
-      );
-    }
   }
 }

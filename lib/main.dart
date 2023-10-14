@@ -1,3 +1,4 @@
+import 'package:lets_chat/controllers/groups_slider.dart';
 import 'utils/exports.dart';
 
 void main() async {
@@ -6,6 +7,7 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: ((context) => MainScreenNotifier())),
     ChangeNotifierProvider(create: ((context) => ValidatorNotifier())),
+    ChangeNotifierProvider(create: (context) => GroupsSliderController()),
   ], child: const MyApp()));
 }
 

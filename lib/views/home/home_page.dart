@@ -1,51 +1,22 @@
 import 'package:lets_chat/utils/exports.dart';
-import 'package:lets_chat/views/home/widgets/groups_slider.dart';
-import 'package:lets_chat/views/messages/widgets/recent_chat.dart';
-import 'package:lets_chat/utils/app_util.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Ghulam Murtaza",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
-              ),
-              Text(
-                "Let's reach your friends!",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey),
-              ),
-            ],
-          ),
-          actions:  [
-            Padding(
-              padding:const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage(AppUtil().appIcon),
-              ),
-            )
-          ],
-        ),
+    return const Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(60), child: HomeAppBar()),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const Gap(30),
+              Gap(30),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Stories",
@@ -53,49 +24,9 @@ class HomePage extends StatelessWidget {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ),
-                  SizedBox(
-                    height: 120,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              height: 100,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(0.2),
-                                      spreadRadius: 1,
-                                      blurRadius: 1,
-                                      offset: const Offset(1, 1))
-                                ],
-                              ),
-                              child:  Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 25,
-                                      backgroundImage:
-                                          AssetImage(AppUtil().appIcon),
-                                    ),
-                                  const  Text('John'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                  ),
-                  const Gap(20),
-                  const Column(
+                  UserStories(),
+                  Gap(20),
+                  Column(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -131,7 +62,7 @@ class HomePage extends StatelessWidget {
                       Gap(20),
                     ],
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -154,3 +85,4 @@ class HomePage extends StatelessWidget {
         ));
   }
 }
+

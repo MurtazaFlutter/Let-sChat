@@ -22,3 +22,7 @@ export 'package:lets_chat/firebase_options.dart';
 export 'package:lets_chat/views/auth/pages/forgot_password_page.dart';
 export 'package:lets_chat/views/auth/pages/register_page.dart';
 export 'package:lets_chat/views/auth/widgets/error_text.dart';
+export 'package:lets_chat/views/home/widgets/groups_slider.dart';
+export 'package:lets_chat/views/home/widgets/home_app_bar.dart';
+export 'package:lets_chat/views/messages/widgets/recent_chat.dart';
+export 'package:lets_chat/views/home/widgets/user_stories.dart';
